@@ -1,0 +1,10 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Single source of truth for the BrotliBlockLib NuGet package version.
+         Consumed by lib/BrotliBlockLib.csproj (<Version>) and by
+         test-nupkg/test-nupkg.csproj (<PackageReference> version). -->
+    <BrotliBlockLibVersion>0.0.9</BrotliBlockLibVersion>
+  </PropertyGroup>
+
+</Project>

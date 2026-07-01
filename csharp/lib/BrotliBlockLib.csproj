@@ -8,7 +8,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>Latest</LangVersion>
     <NoWarn>CS8981;CS8601;CS8602;CS8603;CS8604;;CS8618;CS8625;CS8765</NoWarn>
-    <Version>0.0.9</Version>
+    <Version>$(BrotliBlockLibVersion)</Version>
   </PropertyGroup>
 
   <!-- Native libs copied to output for local dev/test and CI build/test -->
