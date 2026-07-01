@@ -2,6 +2,7 @@
 
 using BrotliBlockLib;
 using System.IO.Compression;
+using BrotliCompressionOptions = BrotliBlockLib.BrotliCompressionOptions;
 
 static class BrotliBlockApp
 {
