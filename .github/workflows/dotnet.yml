@@ -20,7 +20,7 @@ jobs:
           - os: windows-latest
             native-lib: rust-brotli/c/target/release/brotli_ffi.dll
             artifact-name: win-x64-native
-          - os: macos-13
+          - os: macos-26-intel
             native-lib: rust-brotli/c/target/release/libbrotli_ffi.dylib
             artifact-name: osx-x64-native
           - os: macos-latest
