@@ -20,6 +20,12 @@ jobs:
           - os: windows-latest
             native-lib: rust-brotli/c/target/release/brotli_ffi.dll
             artifact-name: win-x64-native
+          - os: macos-13
+            native-lib: rust-brotli/c/target/release/libbrotli_ffi.dylib
+            artifact-name: osx-x64-native
+          - os: macos-latest
+            native-lib: rust-brotli/c/target/release/libbrotli_ffi.dylib
+            artifact-name: osx-arm64-native
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -29,9 +35,9 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
-    - name: build rust-brotli fork
-      run: cd rust-brotli/c && make
+        dotnet-version: 10.0.x
+    - name: Build rust-brotli FFI
+      run: cargo build --release --manifest-path rust-brotli/c/Cargo.toml
     - name: Restore dependencies
       run: cd csharp && dotnet restore
     - name: Build
@@ -59,7 +65,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0.x
     - name: Download Windows native lib
       uses: actions/download-artifact@v4
       with:
@@ -70,6 +76,16 @@ jobs:
       with:
         name: linux-x64-native
         path: csharp/lib/runtimes/linux-x64/native
+    - name: Download macOS x64 native lib
+      uses: actions/download-artifact@v4
+      with:
+        name: osx-x64-native
+        path: csharp/lib/runtimes/osx-x64/native
+    - name: Download macOS arm64 native lib
+      uses: actions/download-artifact@v4
+      with:
+        name: osx-arm64-native
+        path: csharp/lib/runtimes/osx-arm64/native
     - name: Restore dependencies
       run: cd csharp && dotnet restore
     - name: Build Release

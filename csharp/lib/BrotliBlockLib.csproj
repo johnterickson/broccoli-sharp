@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
     <RootNamespace>BrotliBlockLib</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -21,6 +21,10 @@
           Condition="$([MSBuild]::IsOSPlatform('Linux'))"
           CopyToOutputDirectory="PreserveNewest"
           Link="libbrotli_ffi.so" />
+    <None Include="$(MSBuildThisFileDirectory)../../rust-brotli/c/target/release/libbrotli_ffi.dylib"
+          Condition="$([MSBuild]::IsOSPlatform('OSX'))"
+          CopyToOutputDirectory="PreserveNewest"
+          Link="libbrotli_ffi.dylib" />
   </ItemGroup>
 
   <!-- Native libs packed into runtimes/ folders in the nupkg (CI pack job only) -->
@@ -31,6 +35,12 @@
     <None Include="$(MSBuildThisFileDirectory)runtimes/linux-x64/native/libbrotli_ffi.so"
           Pack="true"
           PackagePath="runtimes/linux-x64/native" />
+    <None Include="$(MSBuildThisFileDirectory)runtimes/osx-x64/native/libbrotli_ffi.dylib"
+          Pack="true"
+          PackagePath="runtimes/osx-x64/native" />
+    <None Include="$(MSBuildThisFileDirectory)runtimes/osx-arm64/native/libbrotli_ffi.dylib"
+          Pack="true"
+          PackagePath="runtimes/osx-arm64/native" />
   </ItemGroup>
 
   <ItemGroup>
