@@ -1,2 +1,11 @@
 .vs
 .vscode/settings.json
+
+# Build outputs
+bin/
+obj/
+TestResults/
+
+# Local pack outputs and downloaded native artifacts
+csharp/nupkgs/
+csharp/lib/runtimes/
