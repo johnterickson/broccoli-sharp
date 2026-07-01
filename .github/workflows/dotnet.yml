@@ -17,6 +17,9 @@ jobs:
           - os: ubuntu-latest
             native-lib: rust-brotli/c/target/release/libbrotli_ffi.so
             artifact-name: linux-x64-native
+          - os: ubuntu-24.04-arm
+            native-lib: rust-brotli/c/target/release/libbrotli_ffi.so
+            artifact-name: linux-arm64-native
           - os: windows-latest
             native-lib: rust-brotli/c/target/release/brotli_ffi.dll
             artifact-name: win-x64-native
@@ -76,6 +79,11 @@ jobs:
       with:
         name: linux-x64-native
         path: csharp/lib/runtimes/linux-x64/native
+    - name: Download Linux arm64 native lib
+      uses: actions/download-artifact@v4
+      with:
+        name: linux-arm64-native
+        path: csharp/lib/runtimes/linux-arm64/native
     - name: Download macOS x64 native lib
       uses: actions/download-artifact@v4
       with:
