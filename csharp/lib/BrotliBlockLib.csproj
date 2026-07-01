@@ -35,6 +35,9 @@
     <None Include="$(MSBuildThisFileDirectory)runtimes/linux-x64/native/libbrotli_ffi.so"
           Pack="true"
           PackagePath="runtimes/linux-x64/native" />
+    <None Include="$(MSBuildThisFileDirectory)runtimes/linux-arm64/native/libbrotli_ffi.so"
+          Pack="true"
+          PackagePath="runtimes/linux-arm64/native" />
     <None Include="$(MSBuildThisFileDirectory)runtimes/osx-x64/native/libbrotli_ffi.dylib"
           Pack="true"
           PackagePath="runtimes/osx-x64/native" />
